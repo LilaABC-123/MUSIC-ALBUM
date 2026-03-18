@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>课时详情 - Mock Interview Round 1 | 教学管理系统</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=PingFang+SC:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-layout">
+        <!-- Top Header -->
+        <header class="header">
+            <div class="header-left">
+                <div class="header-logo">
+                    <svg width="83" height="28" viewBox="0 0 83 28" fill="none"><rect x="0" y="2" width="24" height="24" rx="4" fill="rgba(255,255,255,0.3)"/><text x="28" y="18" font-family="Inter,sans-serif" font-size="14" font-weight="600" fill="white">BLUE</text><text x="28" y="26" font-family="Inter,sans-serif" font-size="8" fill="rgba(255,255,255,0.9)">EDUCATION</text></svg>
+                </div>
+                <div class="header-divider"></div>
+                <span class="header-title">Teaching Management</span>
+            </div>
+            <div class="header-right">
+                <a href="#" class="header-link">Switch to the teacher's end</a>
+                <svg class="header-icon-switch" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M3 7l3-3M3 7l3 3M11 7L8 4M11 7l-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                <div class="header-divider"></div>
+                <div class="header-language">
+                    <span>English</span>
+                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3.5 5.25L7 8.75L10.5 5.25" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                </div>
+                <div class="header-divider"></div>
+                <div class="header-user">
+                    <div class="header-avatar"></div>
+                    <svg class="header-bell" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 2a4 4 0 014 4v2.586l1.707 1.707a1 1 0 01-1.414 1.414L10 9.414V6a2 2 0 00-4 0v3.414l-2.293 2.293a1 1 0 11-1.414-1.414L6 8.586V6a4 4 0 014-4zM6 12a2 2 0 104 0H6z" fill="currentColor"/></svg>
+                </div>
+            </div>
+        </header>
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <nav class="sidebar-nav">
+                <a href="#" class="nav-item">
+                    <svg class="nav-icon" width="16" height="16" viewBox="0 0 16 16"><path d="M2 8l6-6 6 6M2 14h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                    <span>Home</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <svg class="nav-icon" width="16" height="16" viewBox="0 0 16 16"><path d="M2 4h12v10H2z" stroke="currentColor" stroke-width="1.5"/></svg>
+                    <span>Todo List</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <svg class="nav-icon" width="16" height="16" viewBox="0 0 16 16"><path d="M8 2v4M8 10v4M4 8h4M2 4h4v4H2zM10 2h4v4h-4zM2 10h4v4H2zM10 10h4v4h-4z" stroke="currentColor" stroke-width="1.5"/></svg>
+                    <span>Director Desk</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <svg class="nav-icon" width="16" height="16" viewBox="0 0 16 16"><path d="M8 2v12M2 8h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                    <span>PA Desk</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <svg class="nav-icon" width="16" height="16" viewBox="0 0 16 16"><path d="M8 8a3 3 0 100-6 3 3 0 000 6zM2 14c0-2.5 2.5-4 6-4s6 1.5 6 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                    <span>Personnel</span>
+                </a>
+                <div class="nav-item has-sub">
+                    <svg class="nav-icon" width="16" height="16" viewBox="0 0 16 16"><path d="M2 4h12v8H2z" stroke="currentColor" stroke-width="1.5"/></svg>
+                    <span>Lesson Management</span>
+                    <svg class="nav-chevron" width="12" height="12" viewBox="0 0 12 12"><path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                </div>
+                <a href="#" class="nav-item nav-item--active">
+                    <span>Lesson List</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <svg class="nav-icon" width="16" height="16" viewBox="0 0 16 16"><path d="M2 4h12v8H2z" stroke="currentColor" stroke-width="1.5"/></svg>
+                    <span>Mock Tests</span>
+                </a>
+                <a href="#" class="nav-item has-sub">
+                    <svg class="nav-icon" width="16" height="16" viewBox="0 0 16 16"><path d="M8 2v4M8 10v4M4 8h4" stroke="currentColor" stroke-width="1.5"/></svg>
+                    <span>Question Management</span>
+                    <svg class="nav-chevron" width="12" height="12" viewBox="0 0 12 12"><path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-width="1.5"/></svg>
+                </a>
+                <a href="#" class="nav-item has-sub">
+                    <svg class="nav-icon" width="16" height="16" viewBox="0 0 16 16"><path d="M2 14V6l6-4 6 4v8" stroke="currentColor" stroke-width="1.5"/></svg>
+                    <span>School Management</span>
+                    <svg class="nav-chevron" width="12" height="12" viewBox="0 0 12 12"><path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-width="1.5"/></svg>
+                </a>
+                <a href="#" class="nav-item has-sub">
+                    <svg class="nav-icon" width="16" height="16" viewBox="0 0 16 16"><path d="M2 4h12l-1 8H3L2 4z" stroke="currentColor" stroke-width="1.5"/></svg>
+                    <span>Teaching</span>
+                    <svg class="nav-chevron" width="12" height="12" viewBox="0 0 12 12"><path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-width="1.5"/></svg>
+                </a>
+                <a href="#" class="nav-item has-sub">
+                    <svg class="nav-icon" width="16" height="16" viewBox="0 0 16 16"><path d="M8 2v12M4 6l4-4 4 4M4 10l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                    <span>Financial</span>
+                    <svg class="nav-chevron" width="12" height="12" viewBox="0 0 12 12"><path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-width="1.5"/></svg>
+                </a>
+                <a href="#" class="nav-item has-sub">
+                    <svg class="nav-icon" width="16" height="16" viewBox="0 0 16 16"><path d="M8 2v2M8 12v2M4 4l2 2M10 10l2 2M4 12l2-2M10 6l2-2" stroke="currentColor" stroke-width="1.5"/></svg>
+                    <span>System</span>
+                    <svg class="nav-chevron" width="12" height="12" viewBox="0 0 12 12"><path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-width="1.5"/></svg>
+                </a>
+                <a href="#" class="nav-item has-sub">
+                    <svg class="nav-icon" width="16" height="16" viewBox="0 0 16 16"><path d="M2 14h4V8H2v6zM6 14h4V4H6v10zM10 14h4V6h-4v8z" stroke="currentColor" stroke-width="1.5"/></svg>
+                    <span>CRM</span>
+                    <svg class="nav-chevron" width="12" height="12" viewBox="0 0 12 12"><path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-width="1.5"/></svg>
+                </a>
+                <a href="#" class="nav-item has-sub">
+                    <svg class="nav-icon" width="16" height="16" viewBox="0 0 16 16"><path d="M2 12l4-8 4 4 4-8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                    <span>Statistical</span>
+                    <svg class="nav-chevron" width="12" height="12" viewBox="0 0 12 12"><path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-width="1.5"/></svg>
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Tabs 置顶栏：白底+投影 -->
+            <div class="tabs-bar">
+            <div class="content-tabs">
+                <div class="tab-pill tab-pill--active">
+                    <span>Student management</span>
+                    <svg class="tab-close" width="14" height="14" viewBox="0 0 14 14"><path d="M4 4l6 6M10 4l-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                </div>
+                <div class="tab-pill">
+                    <span>Teacher list</span>
+                    <svg class="tab-close" width="14" height="14" viewBox="0 0 14 14"><path d="M4 4l6 6M10 4l-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                </div>
+                <div class="tab-pill">
+                    <span>Parents list</span>
+                    <svg class="tab-close" width="14" height="14" viewBox="0 0 14 14"><path d="M4 4l6 6M10 4l-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                </div>
+            </div>
+            </div>
+
+            <!-- Page Header (white bar) -->
+            <div class="page-header-bar">
+                <div class="page-header-left">
+                    <button class="btn-back">
+                        <svg width="14" height="14" viewBox="0 0 14 14"><path d="M10 12L4 7l6-5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                    </button>
+                    <h1 class="page-title">Mock Interview Round 1</h1>
+                    <span class="tag tag--finished">Finished</span>
+                </div>
+                <div class="page-header-right">
+                    <button class="btn-action">
+                        <svg width="14" height="14" viewBox="0 0 14 14"><path d="M2 4v6l3 3 5-5-3-3-5 2z" stroke="currentColor" stroke-width="1.5"/></svg>
+                        <span>Lesson Playback</span>
+                    </button>
+                    <button class="btn-action">
+                        <svg width="14" height="14" viewBox="0 0 14 14"><path d="M7 2v2M7 10v2M2 7h2M10 7h2" stroke="currentColor" stroke-width="1.5"/></svg>
+                        <span>Adjust Hours</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Basic Information Card -->
+            <section class="content-card">
+                <div class="card-header-bar">
+                    <h2 class="card-title">
+                        <svg class="card-icon" viewBox="0 0 22 22" fill="none"><rect x="1" y="2" width="20" height="18" rx="3" stroke="currentColor" stroke-width="1.5"/><rect x="4" y="5" width="6" height="6" rx="1.5" stroke="currentColor" stroke-width="1.5"/><path d="M12 8h5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><path d="M4 15h12" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+                        Basic Information
+                    </h2>
+                </div>
+                <div class="info-section">
+                    <div class="section-label">Course Information</div>
+                    <div class="data-table data-table--bordered">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th style="width:191px">Subject</th>
+                                    <th style="width:287px">Course Name</th>
+                                    <th style="width:287px">Lesson Name</th>
+                                    <th style="width:191px">Course Type</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Humanities</td>
+                                    <td>Career Planning Interview Prep</td>
+                                    <td>Mock Interview Round 1</td>
+                                    <td>1v1</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="info-section">
+                    <div class="section-label">Duration</div>
+                    <div class="data-table data-table--bordered">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th style="width:50%">Planned Duration</th>
+                                    <th style="width:50%">Actual Duration</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1.0h</td>
+                                    <td class="text-success">1.0h</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="info-section">
+                    <div class="section-label-row">
+                        <span class="section-label">Final Settlement</span>
+                        <span class="tag tag--adjusted">Adjusted</span>
+                    </div>
+                    <div class="data-table data-table--bordered data-table--final-settlement">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th></th>
+                                    <th>Base Hours</th>
+                                    <th>Adjustment</th>
+                                    <th>Net Total</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Finn</td>
+                                    <td class="cell-tags"><span class="tag tag--tutor">Tutor</span></td>
+                                    <td>1.5h</td>
+                                    <td class="text-danger">-0.5h</td>
+                                    <td class="text-danger">-0.5h</td>
+                                </tr>
+                                <tr>
+                                    <td>Sophia Chen</td>
+                                    <td class="cell-tags"><span class="tag tag--student">Student</span> <span class="tag tag--contract">Limited Contract</span></td>
+                                    <td>1.5h</td>
+                                    <td class="text-danger">+0.5h</td>
+                                    <td class="text-danger">+1.5h</td>
+                                </tr>
+                                <tr>
+                                    <td>Sophia Chen</td>
+                                    <td class="cell-tags"><span class="tag tag--student">Student</span> <span class="tag tag--contract">Limited Contract</span></td>
+                                    <td>1.5h</td>
+                                    <td class="text-danger">+¥200</td>
+                                    <td class="text-danger">+1.5h | +¥200</td>
+                                </tr>
+                                <tr>
+                                    <td>Lucy Chen</td>
+                                    <td class="cell-tags"><span class="tag tag--student">Student</span> <span class="tag tag--contract">Limited Contract</span></td>
+                                    <td>1.5h</td>
+                                    <td class="text-danger">+¥200</td>
+                                    <td class="text-danger">+1.5h | +¥200</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Student Information Card -->
+            <section class="content-card">
+                <div class="card-header-bar">
+                    <h2 class="card-title">
+                        <svg class="card-icon" viewBox="0 0 22 22" fill="none"><rect x="1" y="2" width="20" height="18" rx="3" stroke="currentColor" stroke-width="1.5"/><rect x="4" y="5" width="6" height="6" rx="1.5" stroke="currentColor" stroke-width="1.5"/><path d="M12 8h5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><path d="M4 15h12" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+                        Student Information
+                    </h2>
+                </div>
+                <div class="card-content">
+                <div class="data-table data-table--bordered">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="width:191px">Name</th>
+                                <th style="width:191px">Contract</th>
+                                <th style="width:258px">Product</th>
+                                <th style="width:170px">Product Type</th>
+                                <th style="width:170px">Main PA</th>
+                                <th style="width:170px">Cover PA</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Sophia Chen</td>
+                                <td>CTR-2025-002</td>
+                                <td>Career Planning Package</td>
+                                <td>Unlimited</td>
+                                <td>Tyler</td>
+                                <td>Tyler</td>
+                            </tr>
+                            <tr>
+                                <td>Sophia Chen</td>
+                                <td>CTR-2025-002</td>
+                                <td>Career Planning Package</td>
+                                <td>Unlimited</td>
+                                <td>Tyler</td>
+                                <td>Tyler</td>
+                            </tr>
+                            <tr>
+                                <td>Sophia Chen</td>
+                                <td>CTR-2025-002</td>
+                                <td>Career Planning Package</td>
+                                <td>Unlimited</td>
+                                <td>Tyler</td>
+                                <td>Tyler</td>
+                            </tr>
+                            <tr>
+                                <td>Lucy Chen</td>
+                                <td>CTR-2025-003</td>
+                                <td>Career Planning Package</td>
+                                <td>Unlimited</td>
+                                <td>Tyler</td>
+                                <td>Tyler</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                </div>
+            </section>
+
+            <!-- Tutor Information Card -->
+            <section class="content-card">
+                <div class="card-header-bar">
+                    <h2 class="card-title">
+                        <svg class="card-icon" viewBox="0 0 22 22" fill="none"><rect x="1" y="2" width="20" height="18" rx="3" stroke="currentColor" stroke-width="1.5"/><rect x="4" y="5" width="6" height="6" rx="1.5" stroke="currentColor" stroke-width="1.5"/><path d="M12 8h5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><path d="M4 15h12" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+                        Tutor Information
+                    </h2>
+                </div>
+                <div class="card-content">
+                <div class="data-table data-table--bordered">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="width:33%">Main Tutor</th>
+                                <th style="width:33%">Observing Tutor</th>
+                                <th style="width:34%">Academic Lead</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Finn</td>
+                                <td>-</td>
+                                <td>Dr. Wilson</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                </div>
+            </section>
+
+            <!-- Lesson Adjustment Card -->
+            <section class="content-card">
+                <div class="card-header-bar card-header-row">
+                    <h2 class="card-title">
+                        <svg class="card-icon" viewBox="0 0 22 22" fill="none"><rect x="1" y="2" width="20" height="18" rx="3" stroke="currentColor" stroke-width="1.5"/><rect x="4" y="5" width="6" height="6" rx="1.5" stroke="currentColor" stroke-width="1.5"/><path d="M12 8h5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><path d="M4 15h12" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+                        Lesson Adjustment
+                    </h2>
+                    <div class="card-actions">
+                        <button class="btn-icon btn-icon--danger" title="Delete">
+                            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h10"/><path d="M5.5 1.5h3v1.5h-3z"/><path d="M3 4h8v6.5q0 .5-1 .5H4q-1 0-1-.5V4z"/><path d="M5 6v4M7 6v4M9 6v4"/></svg>
+                        </button>
+                        <button class="btn-icon btn-icon--teal" title="Edit">
+                            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2L12 4 4 12 2 12 2 10l8-8z"/><path d="M10 2v2h2"/><path d="M2 11h1"/></svg>
+                        </button>
+                    </div>
+                </div>
+                <div class="card-content">
+                <div class="data-table data-table--bordered data-table--lesson-adjustment">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Initiated By</th>
+                                <th>Adjustment Reason</th>
+                                <th>Compensation Setting</th>
+                                <th>Attachment</th>
+                                <th>Operation Note</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><span class="tag tag--tutor">Tutor</span></td>
+                                <td>Late Start—Teacher started 26 minutes late</td>
+                                <td class="cell-compensation">
+                                    <div class="compensation-row">Tutor: <span class="text-danger">-0.5h</span></div>
+                                    <div class="compensation-row">Lucas Zhao: <span class="text-success">+0.5h</span></div>
+                                    <div class="compensation-row">Lucas Zhao: <span class="text-success">+¥200</span></div>
+                                    <div class="compensation-row">Lucas Zhao: <span class="text-success">+¥200</span></div>
+                                </td>
+                                <td class="cell-attachment">
+                                    <svg class="icon-attach icon-attach--teal" width="14" height="14" viewBox="0 0 14 14"><path d="M7 2v8a2 2 0 01-4 0V4a3 3 0 016 0v6" stroke="currentColor" stroke-width="1.5"/></svg>
+                                    <span class="attachment-text">Attachments 1</span>
+                                </td>
+                                <td>Teacher arrived 26 min late. Limited students compensated in hours, Unlimited student compensated in CNY.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                </div>
+            </section>
+
+            <!-- Attendance Card -->
+            <section class="content-card">
+                <div class="card-header-bar">
+                    <h2 class="card-title">
+                    <svg class="card-icon" viewBox="0 0 22 22" fill="none"><rect x="1" y="2" width="20" height="18" rx="3" stroke="currentColor" stroke-width="1.5"/><rect x="4" y="5" width="6" height="6" rx="1.5" stroke="currentColor" stroke-width="1.5"/><path d="M12 8h5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><path d="M4 15h12" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+                    Attendance
+                    </h2>
+                </div>
+                <div class="card-content">
+                <div class="data-table data-table--bordered">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Planned Class Time</th>
+                                <th>Name</th>
+                                <th>Detail</th>
+                                <th>Meeting End Time</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td rowspan="4">2025-12-19 07:44</td>
+                                <td><span class="tag tag--tutor">Tutor</span> Samantha</td>
+                                <td class="text-danger">08:18 - 09:20 (Late)</td>
+                                <td>09:20</td>
+                            </tr>
+                            <tr>
+                                <td><span class="tag tag--student">Student</span> Sophia Chen</td>
+                                <td class="text-danger">08:18 - 09:20 (Late)</td>
+                                <td>09:20</td>
+                            </tr>
+                            <tr>
+                                <td><span class="tag tag--student">Student</span> Sophia Chen</td>
+                                <td class="text-danger">08:18 - 09:20 (Late)</td>
+                                <td>09:20</td>
+                            </tr>
+                            <tr>
+                                <td><span class="tag tag--student">Student</span> Lucy Chen</td>
+                                <td>Not Attended</td>
+                                <td>-</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                </div>
+            </section>
+
+            <!-- Status Change Logs Card -->
+            <section class="content-card">
+                <div class="card-header-bar card-header-tabs">
+                    <button class="card-tab card-tab--active">Status Change Logs</button>
+                    <button class="card-tab">Room Entry/Exit Records</button>
+                </div>
+                <div class="card-content">
+                <div class="data-table data-table--bordered data-table--status-logs">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Time</th>
+                                <th>Operator</th>
+                                <th>Action</th>
+                                <th>Detail</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>2025-12-18 17:00:00</td>
+                                <td>System</td>
+                                <td>Lesson Created</td>
+                                <td>Auto-scheduled</td>
+                                <td><span class="tag tag--status tag--gray">Not Started</span></td>
+                            </tr>
+                            <tr>
+                                <td>2025-12-18 17:00:00</td>
+                                <td>System</td>
+                                <td>Cancel Requested</td>
+                                <td>Teacher emergency cancellation</td>
+                                <td><span class="tag tag--status tag--gray">Not Started</span> <span class="arrow">→</span> <span class="tag tag--status tag--orange">Pending Cancellation</span></td>
+                            </tr>
+                            <tr>
+                                <td>2025-12-18 17:00:00</td>
+                                <td>System</td>
+                                <td>Escalation</td>
+                                <td>Emergency cancellation escalated</td>
+                                <td><span class="tag tag--status tag--orange">Pending Cancellation</span> <span class="arrow">→</span> <span class="tag tag--status tag--red">Cancellation Escalation</span></td>
+                            </tr>
+                            <tr>
+                                <td>2025-12-18 17:00:00</td>
+                                <td>System</td>
+                                <td>Cancelled</td>
+                                <td>Lesson ended early and cancelled</td>
+                                <td><span class="tag tag--status tag--red">Cancellation Escalation</span> <span class="arrow">→</span> <span class="tag tag--status tag--gray">Cancelled</span></td>
+                            </tr>
+                            <tr>
+                                <td>2025-12-18 17:00:00</td>
+                                <td>Aaron</td>
+                                <td>Hours Adjusted</td>
+                                <td>Adjusted to 1.5h actual</td>
+                                <td><span class="tag tag--status tag--gray">Cancelled</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
