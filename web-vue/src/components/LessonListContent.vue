@@ -65,10 +65,6 @@
               <option value="">Select</option>
             </select>
           </div>
-          <div class="filter-item">
-            <label class="filter-label">Student</label>
-            <input type="text" class="filter-input" placeholder="Input" />
-          </div>
           <div class="filter-item filter-item--btn">
             <label class="filter-label">&nbsp;</label>
             <button class="btn-clear-filter">
@@ -80,6 +76,10 @@
           </div>
         </div>
         <div class="filter-row">
+          <div class="filter-item">
+            <label class="filter-label">Student</label>
+            <input type="text" class="filter-input" placeholder="Input" />
+          </div>
           <div class="filter-item">
             <label class="filter-label">Instructor</label>
             <select class="filter-select">
@@ -107,6 +107,8 @@
               <input type="text" class="filter-input" placeholder="Start date - End date" />
             </div>
           </div>
+        </div>
+        <div class="filter-row">
           <div class="filter-item">
             <label class="filter-label">Class Day</label>
             <select class="filter-select">
@@ -292,6 +294,6 @@ export default {
   font-weight: 500 !important;
 }
 .lesson-table td {
-  font-weight: 300 !important;
+  font-weight: 400 !important;
 }
 </style>

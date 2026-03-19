@@ -29,12 +29,15 @@ export default {
       return {
         'nav-item': true,
         'nav-item--active': isActive,
+        'nav-item--no-icon': !item.icon,
         'has-sub': item.hasSub
       }
     },
     handleNavClick(item) {
       if (item.route) {
-        this.$router.push(item.route)
+        this.$router.push(item.route).catch(err => {
+          if (err.name !== 'NavigationDuplicated') throw err
+        })
       }
     }
   },
