@@ -6,13 +6,25 @@
   <title>自得琴社音乐数字专辑</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Libre+Baskerville:wght@400;700&family=Noto+Serif+SC:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&display=swap" rel="stylesheet" />
   <style>
     @font-face {
-      font-family: "XQzhaopaiti0517";
+      font-family: "SourceHanSerifCN-SemiBold";
       src:
-        local("XQzhaopaiti0517"),
-        url("assets/fonts/%E5%96%9C%E9%B9%8A%E6%8B%9B%E7%89%8C%E4%BD%93%28%E7%AE%80%20%E7%B9%81%E4%BD%93%29.ttf") format("truetype");
+        local("Source Han Serif CN SemiBold"),
+        local("SourceHanSerifCN-SemiBold"),
+        url("assets/fonts/SourceHanSerifCN-SemiBold.otf") format("opentype");
+      font-weight: 600;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: "SourceHanSerifCN-Regular";
+      src:
+        local("Source Han Serif CN Regular"),
+        local("SourceHanSerifCN-Regular"),
+        url("assets/fonts/SourceHanSerifCN-Regular.otf") format("opentype");
       font-weight: 400;
       font-style: normal;
       font-display: swap;
@@ -73,16 +85,31 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 6px 18px;
+      padding: 6px 18px 6px 30px;
       background: rgba(23, 23, 23, 0.95);
       backdrop-filter: blur(8px);
       border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     }
 
+    .top-nav-main {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      min-width: 0;
+    }
+
+    .top-nav-actions {
+      margin-left: auto;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
     .brand-logo {
       display: block;
-      width: 188px;
-      height: 46px;
+      width: auto;
+      height: 30px;
       object-fit: contain;
     }
 
@@ -121,6 +148,69 @@
 
     .menu a.active:focus-visible {
       outline: none;
+    }
+
+    .nav-lang {
+      position: relative;
+    }
+
+    .nav-lang-toggle {
+      height: 34px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 0 8px;
+      border: none;
+      border-radius: 8px;
+      background: transparent;
+      color: #ffffff;
+      font-family: "SourceHanSerifCN-Regular", "Noto Serif SC", serif;
+      font-size: 16px;
+      line-height: 1;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+    }
+
+    .nav-lang-toggle:hover,
+    .nav-lang-toggle:focus-visible {
+      background: rgba(255, 255, 255, 0.1);
+      outline: none;
+    }
+
+    .nav-lang-toggle:focus-visible {
+      box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.45);
+    }
+
+    .nav-lang-icon {
+      width: 18px;
+      height: 18px;
+      object-fit: contain;
+      display: block;
+      pointer-events: none;
+      margin-right: 2px;
+    }
+
+    .nav-lang-drop {
+      width: 17px;
+      height: 17px;
+      object-fit: contain;
+      display: block;
+      pointer-events: none;
+      transition: transform 0.2s ease;
+    }
+
+    .nav-lang-toggle[aria-expanded="true"] .nav-lang-drop {
+      transform: rotate(180deg);
+    }
+
+    .lang-panel {
+      right: 0;
+      min-width: 150px;
+    }
+
+    .lang-panel .nav-mobile-list a {
+      font-size: 14px;
+      padding: 10px 16px;
     }
 
     .nav-mobile {
@@ -224,28 +314,46 @@
       margin: 0;
     }
 
-    .hero .en {
-      font-family: "Inter", sans-serif;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      font-size: 14px;
-      opacity: 0.92;
-      margin-bottom: 14px;
-    }
-
     .hero .cn {
-      font-family: "XQzhaopaiti0517", "Noto Serif SC", serif;
+      font-family: "SourceHanSerifCN-SemiBold", "Noto Serif SC", serif;
       font-size: 46px;
       line-height: 1.15;
-      font-weight: 400;
+      font-weight: 600;
       margin-bottom: 18px;
     }
 
+    br.hero-title-en-br {
+      display: none;
+    }
+
+    @media (max-width: 699px) {
+      html[lang="en"] br.hero-title-en-br {
+        display: block;
+      }
+    }
+
     .hero .desc {
-      font-family: "Inter", "Noto Serif SC", serif;
+      font-family: "SourceHanSerifCN-Regular", "Noto Serif SC", serif;
       font-size: 14px;
       line-height: 1.8;
+      font-weight: 400;
       color: rgba(255, 255, 255, 0.85);
+    }
+
+    @media (min-width: 901px) {
+      .hero .desc br {
+        display: none;
+      }
+
+      .hero .desc {
+        white-space: nowrap;
+      }
+
+      html[lang="en"] .hero .desc {
+        white-space: normal;
+        margin: 0 auto;
+        text-align: center;
+      }
     }
 
     .album-list {
@@ -305,32 +413,37 @@
 
     .title-cn {
       margin: 0;
-      font-family: "XQzhaopaiti0517", "Noto Serif SC", serif;
+      font-family: "SourceHanSerifCN-SemiBold", "Noto Serif SC", serif;
       font-size: 26px;
       line-height: 1.25;
-      font-weight: 400;
+      font-weight: 600;
       color: var(--text);
     }
 
     .intro {
       margin: 0 0 18px;
+      font-family: "SourceHanSerifCN-Regular", "Noto Serif SC", serif;
       color: var(--muted);
       font-size: 14px;
       line-height: 1.7;
-    }
-
-    .platform-label {
-      margin: 0 0 15px;
-      color: var(--primary);
-      font-family: "Libre Baskerville", serif;
-      font-size: 13px;
-      letter-spacing: 0.04em;
+      font-weight: 400;
     }
 
     .platforms {
       display: grid;
       grid-template-columns: repeat(4, minmax(0, 1fr));
       gap: 20px;
+    }
+
+    a.platform {
+      text-decoration: none;
+      color: inherit;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    a.platform:focus-visible {
+      outline: 2px solid var(--primary);
+      outline-offset: 2px;
     }
 
     .platform {
@@ -347,10 +460,11 @@
 
     .platform-name {
       margin: 0;
+      font-family: "SourceHanSerifCN-SemiBold", "Noto Serif SC", serif;
       font-size: 13px;
       line-height: 1.2;
       color: var(--text);
-      font-weight: 700;
+      font-weight: 600;
       min-height: 2.4em;
       display: flex;
       align-items: center;
@@ -370,7 +484,9 @@
       background: #ffffff;
       border-radius: 5px;
       color: var(--text);
+      font-family: "SourceHanSerifCN-Regular", "Noto Serif SC", serif;
       font-size: 13px;
+      font-weight: 400;
       line-height: 1;
       height: 32px;
       padding: 0 16px;
@@ -381,10 +497,13 @@
       box-sizing: border-box;
     }
 
-    .listen-btn:hover {
-      background: transparent;
-      border-color: #c34141;
-      color: #c34141;
+    @media (min-width: 800px) {
+      .platform:hover .listen-btn,
+      .platform:focus-visible .listen-btn {
+        background: transparent;
+        border-color: #c34141;
+        color: #c34141;
+      }
     }
 
     @media (max-width: 1365px) {
@@ -399,6 +518,10 @@
       .menu a {
         font-size: 14px;
         padding: 9px 12px;
+      }
+
+      .nav-lang-toggle {
+        font-size: 14px;
       }
     }
 
@@ -435,12 +558,65 @@
         --nav-height: 60px;
       }
 
+      .page {
+        padding-bottom: 15px;
+      }
+
+      .hero {
+        width: min(900px, calc(100vw - 30px));
+      }
+
+      .album-list {
+        padding-left: 15px;
+        padding-right: 15px;
+        align-items: stretch;
+      }
+
+      .album-card {
+        width: 100%;
+        max-width: 920px;
+        padding: 16px;
+      }
+
+      .top-nav {
+        padding-left: 20px;
+      }
+
+      .top-nav-main {
+        flex: 1;
+      }
+
       .menu--desktop {
         display: none;
       }
 
+      .top-nav-actions {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        flex-shrink: 0;
+      }
+
+      .nav-lang {
+        display: block;
+        flex-shrink: 0;
+      }
+
+      .nav-lang-toggle {
+        font-size: 14px;
+        padding: 0 6px;
+        height: 36px;
+        font-family: "SourceHanSerifCN-Regular", "Noto Serif SC", serif;
+        font-weight: 400;
+      }
+
+      .lang-panel .nav-mobile-list a {
+        font-size: 14px;
+      }
+
       .nav-mobile {
         display: block;
+        flex-shrink: 0;
       }
 
       .nav-mobile-toggle {
@@ -449,22 +625,172 @@
       }
 
       .nav-mobile-toggle img {
-        width: 26px;
-        height: 26px;
+        width: 20px;
+        height: 20px;
       }
 
       .hero .cn {
         font-size: 36px;
       }
+
+      .platforms {
+        gap: 18px;
+      }
+
+      .platform {
+        padding-left: 10px;
+      }
+    }
+
+    @media (min-width: 900px) {
+      :root {
+        --nav-height: 64px;
+      }
+
+      .top-nav {
+        height: 64px;
+        padding: 0 14px 0 30px;
+        align-items: stretch;
+        background: rgba(14, 14, 14, 0.98);
+        backdrop-filter: none;
+      }
+
+      .top-nav-main {
+        align-items: center;
+        align-self: stretch;
+        gap: 0;
+      }
+
+      .top-nav-main > a:first-of-type {
+        margin-right: 60px;
+      }
+
+      .brand-logo {
+        width: auto;
+        height: 36px;
+      }
+
+      .menu--desktop {
+        gap: 45px;
+        align-self: stretch;
+        align-items: stretch;
+      }
+
+      .menu--desktop li {
+        display: flex;
+        align-items: stretch;
+      }
+
+      .menu--desktop a {
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        height: 100%;
+        padding: 0 2px;
+        border-radius: 0;
+        font-size: 14px;
+        font-family: "SourceHanSerifCN-Regular", "Noto Serif SC", serif;
+        line-height: 1;
+        background: transparent;
+      }
+
+      .nav-lang-toggle {
+        font-size: 14px;
+      }
+
+      .lang-panel .nav-mobile-list a {
+        font-size: 14px;
+      }
+
+      .menu--desktop a.active {
+        background: transparent;
+        font-family: "SourceHanSerifCN-SemiBold", "Noto Serif SC", serif;
+        font-weight: 600;
+      }
+
+      .menu--desktop a.active::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 3px;
+        background: #c34141;
+      }
+
+      .menu--desktop a:not(.active):hover,
+      .menu--desktop a:not(.active):focus-visible {
+        background: transparent;
+        color: rgba(255, 255, 255, 0.88);
+      }
+    }
+
+    @media (max-width: 799px) {
+      .platforms {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+
+      .platform {
+        display: grid;
+        grid-template-columns: 56px minmax(0, 1fr) auto;
+        align-items: center;
+        gap: 8px;
+        padding: 14px 12px 14px 10px;
+        border-radius: 8px;
+        text-align: left;
+      }
+
+      .platform img {
+        grid-column: 1;
+        grid-row: 1;
+        width: 56px;
+        height: 56px;
+      }
+
+      .platform-name {
+        grid-column: 2;
+        grid-row: 1;
+        min-height: 0;
+        min-width: 0;
+        justify-content: flex-start;
+        font-size: 14px;
+        line-height: 1.2;
+        letter-spacing: 0;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .listen-btn {
+        grid-column: 3;
+        grid-row: 1;
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        margin-top: 0;
+        height: auto;
+        padding: 0;
+        border: none;
+        border-radius: 0;
+        background: transparent;
+        font-size: 14px;
+        white-space: nowrap;
+        color: var(--text);
+      }
+
+      .listen-btn::after {
+        content: "";
+        flex-shrink: 0;
+        width: 20px;
+        height: 20px;
+        background: url("assets/images/enter.svg") center / contain no-repeat;
+      }
     }
 
     @media (max-width: 768px) {
       .top-nav {
-        padding: 6px 10px;
-      }
-
-      .brand-logo {
-        width: 138px;
+        padding: 6px 10px 6px 20px;
       }
 
       .menu {
@@ -480,10 +806,6 @@
         margin-bottom: 32px;
       }
 
-      .hero .en {
-        font-size: 12px;
-      }
-
       .hero .desc {
         line-height: 1.7;
       }
@@ -493,14 +815,14 @@
       }
 
       .album-card {
-        max-width: calc(100vw - 16px);
+        max-width: none;
         border-radius: 14px;
         padding: 0;
         gap: 22px;
       }
 
       .album-card .detail {
-        padding: 0 25px 25px;
+        padding: 0 16px 16px;
       }
 
       .cover-wrap {
@@ -512,52 +834,69 @@
         margin: 0;
         border-radius: 14px 14px 0 0;
       }
-
-      .platforms {
-        gap: 10px;
-      }
-
-      .platform {
-        padding: 10px 8px 14px;
-      }
     }
   </style>
 </head>
 <body>
   <header class="top-nav">
-    <a href="#album-1" aria-label="回到第一张专辑">
-      <img class="brand-logo" src="assets/images/brand-logo.png" alt="自得琴社" />
-    </a>
-    <ul class="menu menu--desktop">
-      <li><a class="album-nav-link active" href="#album-1">神奇秘谱600年</a></li>
-      <li><a class="album-nav-link" href="#album-2">琴为何物·宋</a></li>
-      <li><a class="album-nav-link" href="#album-3">琴为何物·唐</a></li>
-    </ul>
-    <div class="nav-mobile">
-      <button
-        type="button"
-        class="nav-mobile-toggle"
-        id="nav-album-toggle"
-        aria-expanded="false"
-        aria-controls="nav-album-panel"
-        aria-haspopup="true"
-        aria-label="打开专辑导航菜单"
-      >
-        <img src="assets/images/nav_drop.svg" alt="" width="32" height="32" decoding="async" />
-      </button>
-      <div id="nav-album-panel" class="nav-mobile-panel" role="menu" aria-labelledby="nav-album-toggle" hidden>
-        <ul class="nav-mobile-list" role="none">
-          <li role="none"><a class="album-nav-link active" role="menuitem" href="#album-1">神奇秘谱600年</a></li>
-          <li role="none"><a class="album-nav-link" role="menuitem" href="#album-2">琴为何物·宋</a></li>
-          <li role="none"><a class="album-nav-link" role="menuitem" href="#album-3">琴为何物·唐</a></li>
-        </ul>
+    <div class="top-nav-main">
+      <a href="#album-1" aria-label="回到第一张专辑">
+        <img class="brand-logo" src="assets/images/brand-logo.png" alt="自得琴社" />
+      </a>
+      <ul class="menu menu--desktop">
+        <li><a class="album-nav-link active" href="#album-1">神奇秘谱600年</a></li>
+        <li><a class="album-nav-link" href="#album-2">琴为何物・宋・水云归</a></li>
+        <li><a class="album-nav-link" href="#album-3">琴为何物・唐・孤烟直</a></li>
+      </ul>
+      <div class="top-nav-actions">
+        <div class="nav-lang">
+          <button
+            type="button"
+            class="nav-lang-toggle"
+            id="nav-lang-toggle"
+            aria-expanded="false"
+            aria-controls="nav-lang-panel"
+            aria-haspopup="true"
+            aria-label="打开语言切换菜单"
+          >
+            <img class="nav-lang-icon" src="assets/images/language.svg" alt="" width="18" height="18" decoding="async" />
+            <span>简体中文</span>
+            <img class="nav-lang-drop" src="assets/images/drop.svg" alt="" width="17" height="17" decoding="async" />
+          </button>
+          <div id="nav-lang-panel" class="nav-mobile-panel lang-panel" role="menu" aria-labelledby="nav-lang-toggle" hidden>
+            <ul class="nav-mobile-list" role="none">
+              <li role="none"><a class="lang-option active" role="menuitem" href="index.html">简体中文</a></li>
+              <li role="none"><a class="lang-option" role="menuitem" href="ja.html">日本語</a></li>
+              <li role="none"><a class="lang-option" role="menuitem" href="en.html">English</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="nav-mobile">
+          <button
+            type="button"
+            class="nav-mobile-toggle"
+            id="nav-album-toggle"
+            aria-expanded="false"
+            aria-controls="nav-album-panel"
+            aria-haspopup="true"
+            aria-label="打开专辑导航菜单"
+          >
+            <img src="assets/images/nav_drop.svg" alt="" width="20" height="20" decoding="async" />
+          </button>
+          <div id="nav-album-panel" class="nav-mobile-panel" role="menu" aria-labelledby="nav-album-toggle" hidden>
+            <ul class="nav-mobile-list" role="none">
+              <li role="none"><a class="album-nav-link active" role="menuitem" href="#album-1">神奇秘谱600年</a></li>
+              <li role="none"><a class="album-nav-link" role="menuitem" href="#album-2">琴为何物・宋・水云归</a></li>
+              <li role="none"><a class="album-nav-link" role="menuitem" href="#album-3">琴为何物・唐・孤烟直</a></li>
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
   </header>
 
   <main class="page">
     <section class="hero">
-      <p class="en">ZIDE QIN SHE DIGITAL MUSIC ALBUM</p>
       <p class="cn">自得琴社音乐数字专辑</p>
       <p class="desc">
         穿越千年时光，感受中国传统音乐的独特韵味与东方美学，<br />让世界听见中国传统音乐的声音。
@@ -575,28 +914,27 @@
             <h2 class="title-cn">神奇秘谱600年</h2>
           </div>
           <p class="intro">2025 年恰逢《神奇秘谱》刊行600周年，自得琴社以此为缘起推出专辑与音乐会。该书由明代宁王朱权于 1425 年编纂，是中国现存最早、保存最完整的古琴谱集，收录 64 首琴曲。此次演出精选十三首，以古琴独奏、古曲新衍与琴曲移植三种形式，将六百年琴韵化为今时可闻之声，邀知音共赏弦上古今。</p>
-          <p class="platform-label">LISTEN ON PLATFORMS</p>
           <div class="platforms">
-            <div class="platform">
+            <a class="platform" href="https://c6.y.qq.com/base/fcgi-bin/u?__=ejUxXyqPagsI" target="_blank" rel="noopener noreferrer" aria-label="QQ音乐 立即收听">
               <p class="platform-name">QQ音乐</p>
-              <img src="assets/images/platform-qq.svg" alt="QQ音乐" />
-              <a class="listen-btn" href="https://c6.y.qq.com/base/fcgi-bin/u?__=ejUxXyqPagsI" target="_blank" rel="noopener noreferrer" aria-label="QQ音乐 立即收听">立即收听</a>
-            </div>
-            <div class="platform">
+              <img src="assets/images/platform-qq.svg" alt="" />
+              <span class="listen-btn">立即收听</span>
+            </a>
+            <a class="platform" href="https://163cn.tv/4i4itny" target="_blank" rel="noopener noreferrer" aria-label="网易云音乐 立即收听">
               <p class="platform-name">网易云音乐</p>
-              <img src="assets/images/platform-netease.svg" alt="网易云音乐" />
-              <a class="listen-btn" href="https://163cn.tv/4i4itny" target="_blank" rel="noopener noreferrer" aria-label="网易云音乐 立即收听">立即收听</a>
-            </div>
-            <div class="platform">
+              <img src="assets/images/platform-netease.svg" alt="" />
+              <span class="listen-btn">立即收听</span>
+            </a>
+            <a class="platform" href="https://youtube.com/playlist?list=OLAK5uy_kwBru6i3EJviwkRMgjuksBJ7_y2ahWBuE&amp;si=-CVBrTveTSDtWH9T" target="_blank" rel="noopener noreferrer" aria-label="YouTube 立即收听">
               <p class="platform-name">YouTube</p>
-              <img src="assets/images/platform-youtube.svg" alt="YouTube" />
-              <a class="listen-btn" href="https://youtube.com/playlist?list=OLAK5uy_kwBru6i3EJviwkRMgjuksBJ7_y2ahWBuE&amp;si=-CVBrTveTSDtWH9T" target="_blank" rel="noopener noreferrer" aria-label="YouTube 立即收听">立即收听</a>
-            </div>
-            <div class="platform">
+              <img src="assets/images/platform-youtube.svg" alt="" />
+              <span class="listen-btn">立即收听</span>
+            </a>
+            <a class="platform" href="https://music.apple.com/cn/album/%E7%A5%9E%E5%A5%87%E7%A7%98%E8%B0%B1%E5%85%AD%E7%99%BE%E5%B9%B4/1865059061" target="_blank" rel="noopener noreferrer" aria-label="Apple Music 立即收听">
               <p class="platform-name">Apple Music</p>
-              <img src="assets/images/platform-apple-music.svg" alt="Apple Music" />
-              <a class="listen-btn" href="https://music.apple.com/cn/album/%E7%A5%9E%E5%A5%87%E7%A7%98%E8%B0%B1%E5%85%AD%E7%99%BE%E5%B9%B4/1865059061" target="_blank" rel="noopener noreferrer" aria-label="Apple Music 立即收听">立即收听</a>
-            </div>
+              <img src="assets/images/platform-apple-music.svg" alt="" />
+              <span class="listen-btn">立即收听</span>
+            </a>
           </div>
         </div>
       </article>
@@ -611,28 +949,27 @@
             <h2 class="title-cn">琴为何物・宋・水云归</h2>
           </div>
           <p class="intro">自得琴社《琴为何物》朝代系列音乐会的原声带，“水云归” 取自宋代琴家郭沔《潇湘水云》，承载着中国艺术虚灵高远的精神与人曲相传的文脉。专辑曲目涵盖古曲改衍与新作，既收录《杏花天影》《泛沧浪》等文人雅士的情思与襟怀，也包含《醉醉渔，唱唱晚》《满江红》等市井百姓的歌咏与期盼，尽显宋代的人文风貌与时代气韵。</p>
-          <p class="platform-label">LISTEN ON PLATFORMS</p>
           <div class="platforms">
-            <div class="platform">
+            <a class="platform" href="https://c6.y.qq.com/base/fcgi-bin/u?__=7DlbcsqPathA" target="_blank" rel="noopener noreferrer" aria-label="QQ音乐 立即收听">
               <p class="platform-name">QQ音乐</p>
-              <img src="assets/images/platform-qq.svg" alt="QQ音乐" />
-              <a class="listen-btn" href="https://c6.y.qq.com/base/fcgi-bin/u?__=7DlbcsqPathA" target="_blank" rel="noopener noreferrer" aria-label="QQ音乐 立即收听">立即收听</a>
-            </div>
-            <div class="platform">
+              <img src="assets/images/platform-qq.svg" alt="" />
+              <span class="listen-btn">立即收听</span>
+            </a>
+            <a class="platform" href="https://163cn.tv/4i4JSvr" target="_blank" rel="noopener noreferrer" aria-label="网易云音乐 立即收听">
               <p class="platform-name">网易云音乐</p>
-              <img src="assets/images/platform-netease.svg" alt="网易云音乐" />
-              <a class="listen-btn" href="https://163cn.tv/4i4JSvr" target="_blank" rel="noopener noreferrer" aria-label="网易云音乐 立即收听">立即收听</a>
-            </div>
-            <div class="platform">
+              <img src="assets/images/platform-netease.svg" alt="" />
+              <span class="listen-btn">立即收听</span>
+            </a>
+            <a class="platform" href="https://youtube.com/playlist?list=OLAK5uy_n1CXRH7Ic0SfXaOnxwBAoixtkOWteUW2Y&amp;si=vBDJ4BJjLrwQ8GWN" target="_blank" rel="noopener noreferrer" aria-label="YouTube 立即收听">
               <p class="platform-name">YouTube</p>
-              <img src="assets/images/platform-youtube.svg" alt="YouTube" />
-              <a class="listen-btn" href="https://youtube.com/playlist?list=OLAK5uy_n1CXRH7Ic0SfXaOnxwBAoixtkOWteUW2Y&amp;si=vBDJ4BJjLrwQ8GWN" target="_blank" rel="noopener noreferrer" aria-label="YouTube 立即收听">立即收听</a>
-            </div>
-            <div class="platform">
+              <img src="assets/images/platform-youtube.svg" alt="" />
+              <span class="listen-btn">立即收听</span>
+            </a>
+            <a class="platform" href="https://music.apple.com/cn/album/%E7%90%B4%E4%B8%BA%E4%BD%95%E7%89%A9-%E5%AE%8B-%E6%B0%B4%E4%BA%91%E5%BD%92/1840307439" target="_blank" rel="noopener noreferrer" aria-label="Apple Music 立即收听">
               <p class="platform-name">Apple Music</p>
-              <img src="assets/images/platform-apple-music.svg" alt="Apple Music" />
-              <a class="listen-btn" href="https://music.apple.com/cn/album/%E7%90%B4%E4%B8%BA%E4%BD%95%E7%89%A9-%E5%AE%8B-%E6%B0%B4%E4%BA%91%E5%BD%92/1840307439" target="_blank" rel="noopener noreferrer" aria-label="Apple Music 立即收听">立即收听</a>
-            </div>
+              <img src="assets/images/platform-apple-music.svg" alt="" />
+              <span class="listen-btn">立即收听</span>
+            </a>
           </div>
         </div>
       </article>
@@ -647,28 +984,27 @@
             <h2 class="title-cn">琴为何物・唐・孤烟直</h2>
           </div>
           <p class="intro">自得琴社《琴为何物》朝代系列音乐会的原声带，专辑名取自王维 “大漠孤烟直，长河落日圆” 的诗句，以雄浑高阔的意境展现大唐气象。专辑收录古曲改衍与新作，涵盖《幻世长安》《玉狸记》的异志奇趣、《折柳阳关》《凉疆》的百姓离愁、《破阵》的戍边豪情与《霓袋惊梦》的唐宫残梦，全方位呈现大唐的多元风貌与时代精神。</p>
-          <p class="platform-label">LISTEN ON PLATFORMS</p>
           <div class="platforms">
-            <div class="platform">
+            <a class="platform" href="https://c6.y.qq.com/base/fcgi-bin/u?__=WmhePbqPa84c" target="_blank" rel="noopener noreferrer" aria-label="QQ音乐 立即收听">
               <p class="platform-name">QQ音乐</p>
-              <img src="assets/images/platform-qq.svg" alt="QQ音乐" />
-              <a class="listen-btn" href="https://c6.y.qq.com/base/fcgi-bin/u?__=WmhePbqPa84c" target="_blank" rel="noopener noreferrer" aria-label="QQ音乐 立即收听">立即收听</a>
-            </div>
-            <div class="platform">
+              <img src="assets/images/platform-qq.svg" alt="" />
+              <span class="listen-btn">立即收听</span>
+            </a>
+            <a class="platform" href="https://163cn.tv/4i4mRo6" target="_blank" rel="noopener noreferrer" aria-label="网易云音乐 立即收听">
               <p class="platform-name">网易云音乐</p>
-              <img src="assets/images/platform-netease.svg" alt="网易云音乐" />
-              <a class="listen-btn" href="https://163cn.tv/4i4mRo6" target="_blank" rel="noopener noreferrer" aria-label="网易云音乐 立即收听">立即收听</a>
-            </div>
-            <div class="platform">
+              <img src="assets/images/platform-netease.svg" alt="" />
+              <span class="listen-btn">立即收听</span>
+            </a>
+            <a class="platform" href="https://youtube.com/playlist?list=OLAK5uy_mAEq2VIa7KabFgGhiydsh4LRjrmL_pF8Y&amp;si=iYmEvQ7e-iOc1R83" target="_blank" rel="noopener noreferrer" aria-label="YouTube 立即收听">
               <p class="platform-name">YouTube</p>
-              <img src="assets/images/platform-youtube.svg" alt="YouTube" />
-              <a class="listen-btn" href="https://youtube.com/playlist?list=OLAK5uy_mAEq2VIa7KabFgGhiydsh4LRjrmL_pF8Y&amp;si=iYmEvQ7e-iOc1R83" target="_blank" rel="noopener noreferrer" aria-label="YouTube 立即收听">立即收听</a>
-            </div>
-            <div class="platform">
+              <img src="assets/images/platform-youtube.svg" alt="" />
+              <span class="listen-btn">立即收听</span>
+            </a>
+            <a class="platform" href="https://music.apple.com/cn/album/%E7%90%B4%E4%B8%BA%E4%BD%95%E7%89%A9-%E5%94%90-%E5%AD%A4%E7%83%9F%E7%9B%B4/1840307697" target="_blank" rel="noopener noreferrer" aria-label="Apple Music 立即收听">
               <p class="platform-name">Apple Music</p>
-              <img src="assets/images/platform-apple-music.svg" alt="Apple Music" />
-              <a class="listen-btn" href="https://music.apple.com/cn/album/%E7%90%B4%E4%B8%BA%E4%BD%95%E7%89%A9-%E5%94%90-%E5%AD%A4%E7%83%9F%E7%9B%B4/1840307697" target="_blank" rel="noopener noreferrer" aria-label="Apple Music 立即收听">立即收听</a>
-            </div>
+              <img src="assets/images/platform-apple-music.svg" alt="" />
+              <span class="listen-btn">立即收听</span>
+            </a>
           </div>
         </div>
       </article>
@@ -676,16 +1012,200 @@
   </main>
 
   <script>
+    const I18N = {
+      "zh-CN": {
+        htmlLang: "zh-CN",
+        pageTitle: "自得琴社音乐数字专辑",
+        languageLabel: "简体中文",
+        openLanguageMenu: "打开语言切换菜单",
+        openAlbumMenu: "打开专辑导航菜单",
+        backToFirstAlbum: "回到第一张专辑",
+        heroTitle: "自得琴社音乐数字专辑",
+        heroDesc: "穿越千年时光，感受中国传统音乐的独特韵味与东方美学，让世界听见中国传统音乐的声音。",
+        navAlbums: ["神奇秘谱600年", "琴为何物・宋・水云归", "琴为何物・唐・孤烟直"],
+        albumTitles: ["神奇秘谱600年", "琴为何物・宋・水云归", "琴为何物・唐・孤烟直"],
+        albumIntros: [
+          "2025 年恰逢《神奇秘谱》刊行600周年，自得琴社以此为缘起推出专辑与音乐会。该书由明代宁王朱权于 1425 年编纂，是中国现存最早、保存最完整的古琴谱集，收录 64 首琴曲。此次演出精选十三首，以古琴独奏、古曲新衍与琴曲移植三种形式，将六百年琴韵化为今时可闻之声，邀知音共赏弦上古今。",
+          "自得琴社《琴为何物》朝代系列音乐会的原声带，“水云归” 取自宋代琴家郭沔《潇湘水云》，承载着中国艺术虚灵高远的精神与人曲相传的文脉。专辑曲目涵盖古曲改衍与新作，既收录《杏花天影》《泛沧浪》等文人雅士的情思与襟怀，也包含《醉醉渔，唱唱晚》《满江红》等市井百姓的歌咏与期盼，尽显宋代的人文风貌与时代气韵。",
+          "自得琴社《琴为何物》朝代系列音乐会的原声带，专辑名取自王维 “大漠孤烟直，长河落日圆” 的诗句，以雄浑高阔的意境展现大唐气象。专辑收录古曲改衍与新作，涵盖《幻世长安》《玉狸记》的异志奇趣、《折柳阳关》《凉疆》的百姓离愁、《破阵》的戍边豪情与《霓袋惊梦》的唐宫残梦，全方位呈现大唐的多元风貌与时代精神。"
+        ],
+        coverAlts: ["神奇秘谱600年封面", "琴为何物宋水云归封面", "琴为何物唐孤烟直封面"],
+        platformNames: {
+          qq: "QQ音乐",
+          netease: "网易云音乐",
+          youtube: "YouTube",
+          apple: "Apple Music"
+        },
+        listenNow: "立即收听"
+      },
+      ja: {
+        htmlLang: "ja",
+        pageTitle: "自得琴社 デジタル音楽アルバム",
+        languageLabel: "日本語",
+        openLanguageMenu: "言語切替メニューを開く",
+        openAlbumMenu: "アルバムナビゲーションメニューを開く",
+        backToFirstAlbum: "1枚目のアルバムへ戻る",
+        heroTitle: "自得琴社 デジタル音楽アルバム",
+        heroDesc: "千年の時を越え、中国伝統音楽ならではの響きと東洋美学を感じながら、中国伝統音楽の声を世界へ届けます。",
+        navAlbums: ["神奇秘譜 600年", "琴とは何か・宋・水雲帰", "琴とは何か・唐・孤煙直"],
+        albumTitles: ["神奇秘譜 600年", "琴とは何か・宋・水雲帰", "琴とは何か・唐・孤煙直"],
+        albumIntros: [
+          "2025年は『神奇秘譜』刊行600周年にあたり、自得琴社はこれを機にアルバムと演奏会を制作しました。同書は明代の寧王・朱権が1425年に編纂した、中国現存最古かつ保存状態が最も良い古琴譜集で、64曲を収録しています。本公演では13曲を厳選し、古琴独奏・古曲の新展開・琴曲の編曲移植という三つの形で、六百年の琴の響きを現代に響く音へと結び、知音の皆さまと弦上に息づく古今を味わいます。",
+          "自得琴社『琴とは何か』王朝シリーズ公演のオリジナルサウンドトラック。「水雲帰」は宋代の琴家・郭沔による『瀟湘水雲』に由来し、中国芸術の幽玄で高遠な精神と、人と楽曲が受け継ぐ文脈を宿しています。収録曲は古曲の再創作と新作で構成され、『杏花天影』『泛滄浪』に映る文人雅士の情趣と気概に加え、『酔酔漁、唱唱晩』『満江紅』に見られる市井の人々の歌声と願いも収め、宋代の人文風景と時代の気韻を豊かに描きます。",
+          "自得琴社『琴とは何か』王朝シリーズ公演のオリジナルサウンドトラック。アルバム名は王維の詩句「大漠孤煙直、長河落日円」に由来し、雄渾で広々とした境地によって大唐の気象を描き出します。古曲の再創作と新作を収録し、『幻世長安』『玉狸記』の異想の趣、『折柳陽関』『涼疆』に漂う民の離愁、『破陣』の辺塞の豪気、そして『霓袋驚夢』の唐宮の残夢まで、多面的に大唐の多元的風貌と時代精神を表現しています。"
+        ],
+        coverAlts: ["神奇秘譜 600年 カバー", "琴とは何か・宋・水雲帰 カバー", "琴とは何か・唐・孤煙直 カバー"],
+        platformNames: {
+          qq: "QQミュージック",
+          netease: "網易雲音楽",
+          youtube: "YouTube",
+          apple: "Apple Music"
+        },
+        listenNow: "今すぐ聴く"
+      },
+      en: {
+        htmlLang: "en",
+        pageTitle: "Zide Guqin Studio Digital Albums",
+        languageLabel: "English",
+        openLanguageMenu: "Open language switcher",
+        openAlbumMenu: "Open album navigation menu",
+        backToFirstAlbum: "Back to the first album",
+        heroTitle: "Zide Guqin Studio Digital Albums",
+        heroTitleLine1: "Zide Guqin Studio ",
+        heroTitleLine2: "Digital Albums",
+        heroDesc: "Travel across a millennium to experience the distinctive resonance of Chinese traditional music and Eastern aesthetics, and let the world hear the voice of Chinese traditional music.",
+        navAlbums: ["600 Years of Shenqi Mipu", "What Is the Qin? Song - Return of Water and Clouds", "What Is the Qin? Tang - Lone Smoke Rises Straight"],
+        albumTitles: ["600 Years of Shenqi Mipu", "What Is the Qin? Song - Return of Water and Clouds", "What Is the Qin? Tang - Lone Smoke Rises Straight"],
+        albumIntros: [
+          "The year 2025 marks the 600th anniversary of Shenqi Mipu, and Zide Guqin Studio commemorates it with this album and concert program. Compiled in 1425 by Zhu Quan, Prince of Ning in the Ming dynasty, the book is the earliest extant and most complete surviving anthology of guqin notation in China, containing 64 pieces. This performance selects thirteen works, presented as guqin solo, contemporary reinterpretations of classics, and transcriptions of qin repertoire, transforming six centuries of qin heritage into sounds for today and inviting discerning listeners to appreciate the meeting of past and present on the strings.",
+          "Original soundtrack of Zide Guqin Studio's What Is the Qin? dynasty concert series. The subtitle Return of Water and Clouds is drawn from Xiaoxiang Shuiyun by Guo Mian, a Song-dynasty qin master, and conveys the ethereal, elevated spirit of Chinese art and the literary lineage transmitted through people and music. The album includes both reimagined classics and new compositions: alongside the refined sentiment and bearing of literati works such as Apricot Blossom Sky Shadow and Drifting on Canglang Waters, it also embraces pieces like Drunken Fisherman, Evening Singing and Man Jiang Hong, voicing the songs and aspirations of ordinary people and vividly capturing the humanistic character and zeitgeist of the Song dynasty.",
+          "Original soundtrack of Zide Guqin Studio's What Is the Qin? dynasty concert series. The album title is inspired by Wang Wei's famous line, In the vast desert, a lone plume of smoke rises straight; over the long river, the setting sun appears round, evoking the majestic breadth of the Tang era. The program combines reworked classics and new works, spanning the fantastical imagination of Illusory Chang'an and Tale of the Jade Fox, the people's parting sorrows in Breaking Willow at Yang Pass and Frontier Chill, the frontier valor of Formation Breaker, and the lingering palace dream of Dream Startled by the Brocade Pouch, offering a panoramic portrait of the Tang dynasty's diversity and spirit.",
+        ],
+        coverAlts: ["600 Years of Shenqi Mipu cover", "What Is the Qin? Song - Return of Water and Clouds cover", "What Is the Qin? Tang - Lone Smoke Rises Straight cover"],
+        platformNames: {
+          qq: "QQ Music",
+          netease: "NetEase Music",
+          youtube: "YouTube",
+          apple: "Apple Music"
+        },
+        listenNow: "Listen Now"
+      }
+    };
+
     const albumNavLinks = document.querySelectorAll(".album-nav-link");
     const sections = [...document.querySelectorAll(".album-card[id]")];
     const navMobile = document.querySelector(".nav-mobile");
     const navToggle = document.querySelector(".nav-mobile-toggle");
     const navPanel = document.getElementById("nav-album-panel");
+    const navLang = document.querySelector(".nav-lang");
+    const navLangToggle = document.getElementById("nav-lang-toggle");
+    const navLangPanel = document.getElementById("nav-lang-panel");
+    const langOptions = document.querySelectorAll(".lang-option");
+    const navLangLabel = navLangToggle ? navLangToggle.querySelector("span") : null;
+    const topBrandLink = document.querySelector(".top-nav-main > a[href^='#album-1']");
+    const heroTitle = document.querySelector(".hero .cn");
+    const heroDesc = document.querySelector(".hero .desc");
+    const albumTitles = document.querySelectorAll(".title-cn");
+    const albumIntros = document.querySelectorAll(".intro");
+    const coverImages = document.querySelectorAll(".cover-main");
+    const platformCards = document.querySelectorAll("a.platform");
+    const listenButtons = document.querySelectorAll(".listen-btn");
+    const languageRouteMap = {
+      "简体中文": "index.html",
+      "日本語": "ja.html",
+      "English": "en.html"
+    };
+    const platformKeyMap = ["qq", "netease", "youtube", "apple"];
+
+    function escapeHtml(text) {
+      return text
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;");
+    }
+
+    function getCurrentLang() {
+      const params = new URLSearchParams(window.location.search);
+      const paramLang = (params.get("lang") || "").toLowerCase();
+      if (paramLang === "ja" || paramLang === "jp" || paramLang === "ja-jp") return "ja";
+      if (paramLang === "en" || paramLang === "en-us" || paramLang === "en-gb") return "en";
+      if (paramLang === "zh" || paramLang === "zh-cn") return "zh-CN";
+      const path = window.location.pathname.toLowerCase();
+      if (path.endsWith("/ja.html") || path.endsWith("ja.html")) return "ja";
+      if (path.endsWith("/en.html") || path.endsWith("en.html")) return "en";
+      return "zh-CN";
+    }
+
+    function applyI18n(langKey) {
+      const langData = I18N[langKey] || I18N["zh-CN"];
+      document.documentElement.lang = langData.htmlLang;
+      document.title = langData.pageTitle;
+
+      if (navLangLabel) navLangLabel.textContent = langData.languageLabel;
+      if (navLangToggle) navLangToggle.setAttribute("aria-label", langData.openLanguageMenu);
+      if (navToggle) navToggle.setAttribute("aria-label", langData.openAlbumMenu);
+      if (topBrandLink) topBrandLink.setAttribute("aria-label", langData.backToFirstAlbum);
+      if (heroTitle) {
+        if (langKey === "en" && langData.heroTitleLine1 && langData.heroTitleLine2) {
+          heroTitle.innerHTML =
+            `<span class="hero-en-line1">${escapeHtml(langData.heroTitleLine1)}</span>` +
+            '<br class="hero-title-en-br" aria-hidden="true" />' +
+            `<span class="hero-en-line2">${escapeHtml(langData.heroTitleLine2)}</span>`;
+        } else {
+          heroTitle.textContent = langData.heroTitle;
+        }
+      }
+      if (heroDesc) heroDesc.textContent = langData.heroDesc;
+
+      albumNavLinks.forEach((link, idx) => {
+        const text = langData.navAlbums[idx % 3];
+        if (text) link.textContent = text;
+      });
+
+      albumTitles.forEach((title, idx) => {
+        if (langData.albumTitles[idx]) title.textContent = langData.albumTitles[idx];
+      });
+
+      albumIntros.forEach((intro, idx) => {
+        if (langData.albumIntros[idx]) intro.textContent = langData.albumIntros[idx];
+      });
+
+      coverImages.forEach((image, idx) => {
+        if (langData.coverAlts[idx]) image.alt = langData.coverAlts[idx];
+      });
+
+      listenButtons.forEach((button) => {
+        button.textContent = langData.listenNow;
+      });
+
+      platformCards.forEach((card, idx) => {
+        const key = platformKeyMap[idx % 4];
+        const nameEl = card.querySelector(".platform-name");
+        const displayName = langData.platformNames[key];
+        if (nameEl && displayName) nameEl.textContent = displayName;
+        if (displayName) card.setAttribute("aria-label", `${displayName} ${langData.listenNow}`);
+      });
+
+      langOptions.forEach((option) => {
+        const label = option.textContent ? option.textContent.trim() : "";
+        option.classList.toggle("active", label === langData.languageLabel);
+      });
+    }
+
+    const currentLang = getCurrentLang();
+    applyI18n(currentLang);
 
     function setMobileNavOpen(open) {
       if (!navPanel || !navToggle) return;
       navPanel.hidden = !open;
       navToggle.setAttribute("aria-expanded", open ? "true" : "false");
+    }
+
+    function setLangNavOpen(open) {
+      if (!navLangPanel || !navLangToggle) return;
+      navLangPanel.hidden = !open;
+      navLangToggle.setAttribute("aria-expanded", open ? "true" : "false");
     }
 
     function setActiveLink(id) {
@@ -701,13 +1221,28 @@
         const targetId = href.replace("#", "");
         setActiveLink(targetId);
         if (navPanel && !navPanel.hidden) setMobileNavOpen(false);
+        if (navLangPanel && !navLangPanel.hidden) setLangNavOpen(false);
+      });
+    });
+
+    langOptions.forEach((option) => {
+      option.addEventListener("click", () => {
+        langOptions.forEach((item) => item.classList.remove("active"));
+        option.classList.add("active");
+        const label = option.textContent ? option.textContent.trim() : "";
+        const route = languageRouteMap[label];
+        if (route) option.setAttribute("href", route);
+        if (navLangLabel && label) navLangLabel.textContent = label;
+        setLangNavOpen(false);
       });
     });
 
     if (navToggle && navPanel) {
       navToggle.addEventListener("click", (e) => {
         e.stopPropagation();
-        setMobileNavOpen(navPanel.hidden);
+        const opening = navPanel.hidden;
+        setMobileNavOpen(opening);
+        if (opening && navLangPanel && !navLangPanel.hidden) setLangNavOpen(false);
       });
 
       document.addEventListener("click", (e) => {
@@ -716,6 +1251,23 @@
 
       document.addEventListener("keydown", (e) => {
         if (e.key === "Escape" && !navPanel.hidden) setMobileNavOpen(false);
+      });
+    }
+
+    if (navLangToggle && navLangPanel) {
+      navLangToggle.addEventListener("click", (e) => {
+        e.stopPropagation();
+        const opening = navLangPanel.hidden;
+        setLangNavOpen(opening);
+        if (opening && navPanel && !navPanel.hidden) setMobileNavOpen(false);
+      });
+
+      document.addEventListener("click", (e) => {
+        if (navLang && !navLang.contains(e.target)) setLangNavOpen(false);
+      });
+
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && !navLangPanel.hidden) setLangNavOpen(false);
       });
     }
 
