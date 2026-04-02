@@ -300,14 +300,39 @@
     }
 
     .page {
-      padding: calc(var(--nav-height) + 70px) 0 66px;
+      padding: calc(var(--nav-height) + 50px) 0 66px;
     }
 
     .hero {
-      width: min(900px, calc(100vw - 40px));
-      margin: 0 auto 54px;
-      text-align: center;
+      position: relative;
+      width: min(1250px, calc(100vw - 46px));
+      margin: 0 auto 40px;
+      padding: 40px 36px;
+      text-align: left;
       color: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.28);
+      border-radius: 18px;
+      background: linear-gradient(120deg, rgba(9, 12, 17, 0.74) 0%, rgba(9, 12, 17, 0.25) 55%, rgba(9, 12, 17, 0.7) 100%);
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      border-radius: inherit;
+      background:
+        radial-gradient(140% 90% at 8% 8%, rgba(255, 255, 255, 0.16) 0%, rgba(255, 255, 255, 0) 58%),
+        radial-gradient(90% 80% at 92% 16%, rgba(122, 164, 230, 0.14) 0%, rgba(122, 164, 230, 0) 62%),
+        repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.07) 0 1px, rgba(255, 255, 255, 0) 1px 16px);
+      opacity: 0.6;
+    }
+
+    .hero > * {
+      position: relative;
+      z-index: 1;
     }
 
     .hero p {
@@ -319,7 +344,7 @@
       font-size: 32px;
       line-height: 1.15;
       font-weight: 600;
-      margin-bottom: 18px;
+      margin-bottom: 13px;
     }
 
     br.hero-title-en-br {
@@ -345,6 +370,10 @@
         display: none;
       }
 
+      html[lang="en"] .hero .desc br.hero-desc-en-br {
+        display: inline;
+      }
+
       .hero .desc {
         white-space: nowrap;
       }
@@ -352,7 +381,7 @@
       html[lang="en"] .hero .desc {
         white-space: normal;
         margin: 0 auto;
-        text-align: center;
+        text-align: left;
       }
     }
 
@@ -526,6 +555,10 @@
     }
 
     @media (max-width: 999px) {
+      .hero {
+        width: min(980px, calc(100vw - 28px));
+      }
+
       .album-list {
         align-items: center;
         padding-left: 0;
@@ -559,11 +592,17 @@
       }
 
       .page {
+        padding-top: calc(var(--nav-height) + 35px);
         padding-bottom: 25px;
       }
 
       .hero {
-        width: min(900px, calc(100vw - 30px));
+        padding: 25px 36px;
+        margin-bottom: 25px;
+      }
+
+      html[lang="en"] .hero .desc br.hero-desc-en-br {
+        display: none;
       }
 
       .album-list {
@@ -796,10 +835,6 @@
       .menu a {
         font-size: 12px;
         padding: 8px 8px;
-      }
-
-      .hero {
-        margin-bottom: 32px;
       }
 
       .hero .desc {
@@ -1069,6 +1104,8 @@
         heroTitle: "Zide Guqin Studio Digital Albums",
         heroTitleLine1: "Zide Guqin Studio ",
         heroTitleLine2: "Digital Albums",
+        heroDescLine1: "Travel across a millennium to experience the distinctive resonance of Chinese traditional music and Eastern aesthetics, ",
+        heroDescLine2: "and let the world hear the voice of Chinese traditional music.",
         heroDesc: "Travel across a millennium to experience the distinctive resonance of Chinese traditional music and Eastern aesthetics, and let the world hear the voice of Chinese traditional music.",
         navAlbums: ["600 Years of Shenqi Mipu", "What Is the Qin? Song - Return of Water and Clouds", "What Is the Qin? Tang - Lone Smoke Rises Straight"],
         albumTitles: ["600 Years of Shenqi Mipu", "What Is the Qin? Song - Return of Water and Clouds", "What Is the Qin? Tang - Lone Smoke Rises Straight"],
@@ -1152,7 +1189,16 @@
           heroTitle.textContent = langData.heroTitle;
         }
       }
-      if (heroDesc) heroDesc.textContent = langData.heroDesc;
+      if (heroDesc) {
+        if (langKey === "en" && langData.heroDescLine1 && langData.heroDescLine2) {
+          heroDesc.innerHTML =
+            escapeHtml(langData.heroDescLine1) +
+            '<br class="hero-desc-en-br" aria-hidden="true" />' +
+            escapeHtml(langData.heroDescLine2);
+        } else {
+          heroDesc.textContent = langData.heroDesc;
+        }
+      }
 
       albumNavLinks.forEach((link, idx) => {
         const text = langData.navAlbums[idx % 3];
