@@ -349,6 +349,12 @@
       text-align: left;
     }
 
+    @media (min-width: 1001px) {
+      .hero .cn {
+        font-size: 38px;
+      }
+    }
+
     br.hero-title-en-br {
       display: none;
     }
@@ -1008,6 +1014,11 @@
               <img src="assets/images/platform-Spotify.svg" alt="" />
               <span class="listen-btn" aria-hidden="true"></span>
             </a>
+            <a class="platform" href="https://qishui.douyin.com/s/ixQhvoBh/" target="_blank" rel="noopener noreferrer" aria-label="汽水音乐 立即收听">
+              <p class="platform-name">汽水音乐</p>
+              <img src="assets/images/platform-qishuiyinyue.svg" alt="" />
+              <span class="listen-btn" aria-hidden="true"></span>
+            </a>
             <a class="platform" href="https://music.line.me/webapp/search/album/%E7%A5%9E%E5%A5%87%E7%A7%98%E8%B0%B1%E5%85%AD%E7%99%BE%E5%B9%B4" target="_blank" rel="noopener noreferrer" aria-label="LINE MUSIC 立即收听">
               <p class="platform-name">LINE MUSIC</p>
               <img src="assets/images/platform-line music.svg" alt="" />
@@ -1051,6 +1062,11 @@
             <a class="platform" href="https://open.spotify.com/album/3Yy4q8dTrr2tVYZA3HmoDJ" target="_blank" rel="noopener noreferrer" aria-label="Spotify 立即收听">
               <p class="platform-name">Spotify</p>
               <img src="assets/images/platform-Spotify.svg" alt="" />
+              <span class="listen-btn" aria-hidden="true"></span>
+            </a>
+            <a class="platform" href="https://qishui.douyin.com/s/ixQkN3pr/" target="_blank" rel="noopener noreferrer" aria-label="汽水音乐 立即收听">
+              <p class="platform-name">汽水音乐</p>
+              <img src="assets/images/platform-qishuiyinyue.svg" alt="" />
               <span class="listen-btn" aria-hidden="true"></span>
             </a>
             <a class="platform" href="https://lin.ee/vcHxwOU2" target="_blank" rel="noopener noreferrer" aria-label="LINE MUSIC 立即收听">
@@ -1098,6 +1114,11 @@
               <img src="assets/images/platform-Spotify.svg" alt="" />
               <span class="listen-btn" aria-hidden="true"></span>
             </a>
+            <a class="platform" href="https://qishui.douyin.com/s/ixQhvA1q/" target="_blank" rel="noopener noreferrer" aria-label="汽水音乐 立即收听">
+              <p class="platform-name">汽水音乐</p>
+              <img src="assets/images/platform-qishuiyinyue.svg" alt="" />
+              <span class="listen-btn" aria-hidden="true"></span>
+            </a>
             <a class="platform" href="https://music.line.me/webapp/search/album/%E7%90%B4%E4%B8%BA%E4%BD%95%E7%89%A9%20%E5%94%90%20%E5%AD%A4%E7%83%9F%E7%9B%B4" target="_blank" rel="noopener noreferrer" aria-label="LINE MUSIC 立即收听">
               <p class="platform-name">LINE MUSIC</p>
               <img src="assets/images/platform-line music.svg" alt="" />
@@ -1134,6 +1155,7 @@
           youtube: "YouTube",
           apple: "Apple Music",
           spotify: "Spotify",
+          qishui: "汽水音乐",
           line: "LINE MUSIC"
         },
         listenNow: "立即收听"
@@ -1161,6 +1183,7 @@
           youtube: "YouTube",
           apple: "Apple Music",
           spotify: "Spotify",
+          qishui: "汽水音楽",
           line: "LINE MUSIC"
         },
         listenNow: "今すぐ聴く"
@@ -1192,6 +1215,7 @@
           youtube: "YouTube",
           apple: "Apple Music",
           spotify: "Spotify",
+          qishui: "Qishui Music",
           line: "LINE MUSIC"
         },
         listenNow: "Listen Now"
@@ -1220,7 +1244,7 @@
       "日本語": "ja.html",
       "English": "en.html"
     };
-    const platformKeyMap = ["qq", "netease", "youtube", "apple", "spotify", "line"];
+    const platformKeyMap = ["qq", "netease", "youtube", "apple", "spotify", "qishui", "line"];
 
     function escapeHtml(text) {
       return text
@@ -1290,7 +1314,7 @@
       });
 
       platformCards.forEach((card, idx) => {
-        const key = platformKeyMap[idx % 6];
+        const key = platformKeyMap[idx % 7];
         const nameEl = card.querySelector(".platform-name");
         const displayName = langData.platformNames[key];
         if (nameEl && displayName) nameEl.textContent = displayName;
